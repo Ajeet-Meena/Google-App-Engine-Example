@@ -13,7 +13,8 @@
         <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
         <init-param>
             <param-name>services</param-name>
-            <param-value>com.example.backend.MyEndpoint, com.example.backend.QuoteEndpoint</param-value>
+            <param-value>com.example.backend.MyEndpoint, com.example.backend.QuoteEndpoint,
+                com.example.backend.AutherEndpoint</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>

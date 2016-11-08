@@ -1,8 +1,12 @@
 package com.example.backend;
 
 import com.google.appengine.api.datastore.Text;
+import com.googlecode.objectify.Key;
+import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Load;
+import com.googlecode.objectify.annotation.Parent;
 
 @Entity
 public class Quote {
@@ -11,6 +15,8 @@ public class Quote {
     private String who;
     private String what;
     private Text text;
+    @Parent @Load
+    private Ref<Auther> auther;
 
     public Quote() {
     }
@@ -45,5 +51,13 @@ public class Quote {
 
     public void setText(Text text) {
         this.text = text;
+    }
+
+    public Auther getAuther() {
+        return auther.get();
+    }
+
+    public void setAuther(Key<Auther> auther) {
+        this.auther = Ref.create(auther);
     }
 }
