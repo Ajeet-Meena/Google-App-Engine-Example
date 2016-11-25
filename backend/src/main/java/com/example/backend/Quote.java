@@ -1,6 +1,7 @@
 package com.example.backend;
 
 import com.google.appengine.api.datastore.Text;
+import com.google.appengine.repackaged.org.codehaus.jackson.annotate.JsonIgnore;
 import com.googlecode.objectify.Key;
 import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Entity;
@@ -57,7 +58,7 @@ public class Quote {
         return auther.get();
     }
 
-    public void setAuther(Key<Auther> auther) {
+    public void setAuther(Auther auther) {
         this.auther = Ref.create(auther);
     }
 }
