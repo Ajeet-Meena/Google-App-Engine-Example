@@ -3,6 +3,7 @@ package com.example.backend;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
+import com.google.api.server.spi.request.Auth;
 import com.google.api.server.spi.response.CollectionResponse;
 import com.google.api.server.spi.response.NotFoundException;
 import com.google.appengine.api.datastore.Cursor;
@@ -42,10 +43,6 @@ public class QuoteEndpoint {
 
     private static final int DEFAULT_LIST_LIMIT = 20;
 
-    static {
-        // Typically you would register this inside an OfyServive wrapper. See: https://code.google.com/p/objectify-appengine/wiki/BestPractices
-        ObjectifyService.register(Quote.class);
-    }
 
     /**
      * Returns the {@link Quote} with the corresponding ID.

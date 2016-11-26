@@ -8,7 +8,7 @@ import com.googlecode.objectify.annotation.Id;
  */
 
 @Entity
-public class Auther {
+public class Author {
     @Id
     private Long id;
     String name;

@@ -44,75 +44,75 @@ public class AutherEndpoint {
 
     static {
         // Typically you would register this inside an OfyServive wrapper. See: https://code.google.com/p/objectify-appengine/wiki/BestPractices
-        ObjectifyService.register(Auther.class);
+        ObjectifyService.register(Author.class);
     }
 
     /**
-     * Returns the {@link Auther} with the corresponding ID.
+     * Returns the {@link Author} with the corresponding ID.
      *
      * @param id the ID of the entity to be retrieved
      * @return the entity with the corresponding ID
-     * @throws NotFoundException if there is no {@code Auther} with the provided ID.
+     * @throws NotFoundException if there is no {@code Author} with the provided ID.
      */
     @ApiMethod(
             name = "get",
             path = "auther/{id}",
             httpMethod = ApiMethod.HttpMethod.GET)
-    public Auther get(@Named("id") Long id) throws NotFoundException {
-        logger.info("Getting Auther with ID: " + id);
-        Auther auther = ofy().load().type(Auther.class).id(id).now();
-        if (auther == null) {
-            throw new NotFoundException("Could not find Auther with ID: " + id);
+    public Author get(@Named("id") Long id) throws NotFoundException {
+        logger.info("Getting Author with ID: " + id);
+        Author author = ofy().load().type(Author.class).id(id).now();
+        if (author == null) {
+            throw new NotFoundException("Could not find Author with ID: " + id);
         }
-        return auther;
+        return author;
     }
 
     /**
-     * Inserts a new {@code Auther}.
+     * Inserts a new {@code Author}.
      */
     @ApiMethod(
             name = "insert",
-            path = "auther",
+            path = "author",
             httpMethod = ApiMethod.HttpMethod.POST)
-    public Auther insert(Auther auther) {
+    public Author insert(Author author) {
         // Typically in a RESTful API a POST does not have a known ID (assuming the ID is used in the resource path).
-        // You should validate that auther.id has not been set. If the ID type is not supported by the
+        // You should validate that author.id has not been set. If the ID type is not supported by the
         // Objectify ID generator, e.g. long or String, then you should generate the unique ID yourself prior to saving.
         //
         // If your client provides the ID then you should probably use PUT instead.
-        ofy().save().entity(auther).now();
-        logger.info("Created Auther.");
+        ofy().save().entity(author).now();
+        logger.info("Created Author.");
 
-        return ofy().load().entity(auther).now();
+        return ofy().load().entity(author).now();
     }
 
     /**
-     * Updates an existing {@code Auther}.
+     * Updates an existing {@code Author}.
      *
      * @param id     the ID of the entity to be updated
-     * @param auther the desired state of the entity
+     * @param author the desired state of the entity
      * @return the updated version of the entity
      * @throws NotFoundException if the {@code id} does not correspond to an existing
-     *                           {@code Auther}
+     *                           {@code Author}
      */
     @ApiMethod(
             name = "update",
-            path = "auther/{id}",
+            path = "author/{id}",
             httpMethod = ApiMethod.HttpMethod.PUT)
-    public Auther update(@Named("id") Long id, Auther auther) throws NotFoundException {
+    public Author update(@Named("id") Long id, Author author) throws NotFoundException {
         // TODO: You should validate your ID parameter against your resource's ID here.
         checkExists(id);
-        ofy().save().entity(auther).now();
-        logger.info("Updated Auther: " + auther);
-        return ofy().load().entity(auther).now();
+        ofy().save().entity(author).now();
+        logger.info("Updated Author: " + author);
+        return ofy().load().entity(author).now();
     }
 
     /**
-     * Deletes the specified {@code Auther}.
+     * Deletes the specified {@code Author}.
      *
      * @param id the ID of the entity to delete
      * @throws NotFoundException if the {@code id} does not correspond to an existing
-     *                           {@code Auther}
+     *                           {@code Author}
      */
     @ApiMethod(
             name = "remove",
@@ -120,8 +120,8 @@ public class AutherEndpoint {
             httpMethod = ApiMethod.HttpMethod.DELETE)
     public void remove(@Named("id") Long id) throws NotFoundException {
         checkExists(id);
-        ofy().delete().type(Auther.class).id(id).now();
-        logger.info("Deleted Auther with ID: " + id);
+        ofy().delete().type(Author.class).id(id).now();
+        logger.info("Deleted Author with ID: " + id);
     }
 
     /**
@@ -135,25 +135,25 @@ public class AutherEndpoint {
             name = "list",
             path = "auther",
             httpMethod = ApiMethod.HttpMethod.GET)
-    public CollectionResponse<Auther> list(@Nullable @Named("cursor") String cursor, @Nullable @Named("limit") Integer limit) {
+    public CollectionResponse<Author> list(@Nullable @Named("cursor") String cursor, @Nullable @Named("limit") Integer limit) {
         limit = limit == null ? DEFAULT_LIST_LIMIT : limit;
-        Query<Auther> query = ofy().load().type(Auther.class).limit(limit);
+        Query<Author> query = ofy().load().type(Author.class).limit(limit);
         if (cursor != null) {
             query = query.startAt(Cursor.fromWebSafeString(cursor));
         }
-        QueryResultIterator<Auther> queryIterator = query.iterator();
-        List<Auther> autherList = new ArrayList<Auther>(limit);
+        QueryResultIterator<Author> queryIterator = query.iterator();
+        List<Author> authorList = new ArrayList<Author>(limit);
         while (queryIterator.hasNext()) {
-            autherList.add(queryIterator.next());
+            authorList.add(queryIterator.next());
         }
-        return CollectionResponse.<Auther>builder().setItems(autherList).setNextPageToken(queryIterator.getCursor().toWebSafeString()).build();
+        return CollectionResponse.<Author>builder().setItems(authorList).setNextPageToken(queryIterator.getCursor().toWebSafeString()).build();
     }
 
     private void checkExists(Long id) throws NotFoundException {
         try {
-            ofy().load().type(Auther.class).id(id).safe();
+            ofy().load().type(Author.class).id(id).safe();
         } catch (com.googlecode.objectify.NotFoundException e) {
-            throw new NotFoundException("Could not find Auther with ID: " + id);
+            throw new NotFoundException("Could not find Author with ID: " + id);
         }
     }
 }
