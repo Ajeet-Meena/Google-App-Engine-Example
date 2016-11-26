@@ -20,7 +20,10 @@ import okio.Okio;
 
 
 public class RetrofitCall implements Call {
+
     Request request;
+    private static final int READ_TIMEOUT = 60 * 1000;
+    private static final int CONNECTION_TIMEOUT = 60 * 1000;
 
     RetrofitCall(Request request) {
         this.request = request;
@@ -38,7 +41,8 @@ public class RetrofitCall implements Call {
         connection.setUseCaches(false);
         connection.setDoOutput(true);
         connection.setRequestMethod(request.method());
-
+        connection.setConnectTimeout(CONNECTION_TIMEOUT);
+        connection.setReadTimeout(READ_TIMEOUT);
         Headers headers = request.headers();
         if (headers != null) {
             for (int i = 0; i < headers.size(); i++) {

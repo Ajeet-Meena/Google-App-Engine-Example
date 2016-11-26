@@ -19,11 +19,8 @@ import okhttp3.OkHttpClient;
  **/
 public class ApplicationService implements ServletContextListener {
 
-  private static final int READ_TIMEOUT = 60 * 1000;
-  private static final int CONNECTION_TIMEOUT = 60 * 1000;
   private static ApplicationService myApplication;
   private static RestClient restClient;
-  private static OkHttpClient okHttpClient;
   public final String TAG = ApplicationService.class.getSimpleName();
   private static String prevBaseUrl = "";
   private static RestClient getRestClient(String baseUrl) {
@@ -38,33 +35,11 @@ public class ApplicationService implements ServletContextListener {
     return myApplication;
   }
 
-/*  public static OkHttpClient getOkHttpClient() {
-    if (okHttpClient == null) {
-      HttpLoggingInterceptor logger = new HttpLoggingInterceptor();
-      logger.setLevel(HttpLoggingInterceptor.Level.BODY);
-      okHttpClient = new OkHttpClient.Builder().readTimeout(READ_TIMEOUT, TimeUnit.MILLISECONDS)
-              .connectTimeout(CONNECTION_TIMEOUT, TimeUnit.MILLISECONDS).addInterceptor(logger).addInterceptor(new Interceptor() {
-                @Override
-                public okhttp3.Response intercept(Chain chain) throws IOException {
-                  okhttp3.Request request = chain.request().newBuilder()
-                          .addHeader("Accept", "application/json")
-                          .addHeader("Content-type", "application/json").build();
-                  return chain.proceed(request);
-                }
-              }).build();
-
-    }
-    return okHttpClient;
-  }*/
-
-
   public static APIService getAPIService(String baseUrl) {
     return getRestClient(baseUrl).getApiService();
   }
 
   public void contextInitialized(ServletContextEvent event) {
-    // This will be invoked as part of a warmup request, or the first user request if no warmup
-    // request.
     ObjectifyService.register(Quote.class);
     ObjectifyService.register(Author.class);
     myApplication = this;

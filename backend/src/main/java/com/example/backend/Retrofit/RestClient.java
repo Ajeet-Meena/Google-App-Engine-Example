@@ -10,7 +10,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RestClient {
 
-    private static final String BASE_URL = "http://api.themoviedb.org/";
     private APIService apiService;
 
     public RestClient(String baseUrl) {
