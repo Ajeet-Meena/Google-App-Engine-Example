@@ -6,6 +6,10 @@ import java.io.Serializable;
 /**
  * Created by Ajeet Kumar Meena on 18-06-2016.
  */
+
+/**
+ * Base API response.
+ */
 public class ApiResponse implements Serializable {
 
     int responsecode;

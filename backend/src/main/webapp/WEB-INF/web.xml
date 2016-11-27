@@ -15,7 +15,8 @@
             <param-name>services</param-name>
             <param-value>com.example.backend.QuoteEndpoint,
                 com.example.backend.AutherEndpoint,
-            com.example.backend.SocialApis.SocialApi</param-value>
+            com.example.backend.SocialApis.SocialApi,
+            com.example.backend.ExtractApi.ExtractApi</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>

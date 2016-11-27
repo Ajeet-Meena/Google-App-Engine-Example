@@ -18,7 +18,9 @@ import okio.BufferedSink;
 import okio.BufferedSource;
 import okio.Okio;
 
-
+/**
+ * Retrofit Call to support GAE
+ */
 public class RetrofitCall implements Call {
 
     Request request;
