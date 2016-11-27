@@ -1,8 +1,11 @@
 package com.example.backend.Retrofit;
 
+import com.example.backend.AutherEndpoint;
+
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,6 +26,7 @@ import okio.Okio;
  */
 public class RetrofitCall implements Call {
 
+    private static final Logger logger = Logger.getLogger(RetrofitCall.class.getName());
     Request request;
     private static final int READ_TIMEOUT = 60 * 1000;
     private static final int CONNECTION_TIMEOUT = 60 * 1000;
@@ -39,6 +43,7 @@ public class RetrofitCall implements Call {
     @Override
     public Response execute() throws IOException {
         URL url = request.url().url();
+        logger.info("Url: " + url.toString());
         final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setUseCaches(false);
         connection.setDoOutput(true);
@@ -52,7 +57,6 @@ public class RetrofitCall implements Call {
                 connection.setRequestProperty(name, headers.get(name));
             }
         }
-
         if (request.body() != null) {
             BufferedSink outbuf;
             outbuf = Okio.buffer(Okio.sink(connection.getOutputStream()));

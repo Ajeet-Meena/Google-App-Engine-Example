@@ -26,7 +26,7 @@ public interface APIService {
     );
 
 
-    @GET("/extract")
+    @GET("/1/extract")
     Call<ExtractedNewsObject> extractUrl(
             @Query("url") String url,
             @Query("key") String key

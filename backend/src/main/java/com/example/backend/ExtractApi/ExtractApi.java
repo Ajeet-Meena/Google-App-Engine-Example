@@ -43,7 +43,7 @@ public class ExtractApi {
             httpMethod = ApiMethod.HttpMethod.GET)
     public ExtractedNewsObject get(@Named("url") String url) throws NotFoundException, IOException {
         logger.info("Getting Extracted News Object of url: " + url);
-        return ApplicationService.getAPIService(ApplicationConstants.GRAPH_API_BASE_URL)
+        return ApplicationService.getAPIService(ApplicationConstants.EMBEDED_API_BASE_URL)
                 .extractUrl(url,ApplicationConstants.EMBEDED_API_KEY).execute().body();
     }
 

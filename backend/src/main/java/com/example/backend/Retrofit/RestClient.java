@@ -23,7 +23,6 @@ public class RestClient {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         apiService = retrofit.create(APIService.class);
-
     }
 
     public APIService getApiService() {

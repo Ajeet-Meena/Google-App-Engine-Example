@@ -4,14 +4,8 @@ import com.example.backend.Retrofit.APIService;
 import com.example.backend.Retrofit.RestClient;
 import com.googlecode.objectify.ObjectifyService;
 
-import java.io.IOException;
-import java.util.concurrent.TimeUnit;
-
 import javax.servlet.ServletContextListener;
 import javax.servlet.ServletContextEvent;
-
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
 
 /**
  * ApplicationService, a ServletContextListener, is setup in web.xml to run before a JSP is run.  This is
