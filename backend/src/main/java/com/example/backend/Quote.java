@@ -30,5 +30,8 @@ public class Quote {
 
     public void setAuther(Author author) {
         this.author = Ref.create(author);
+        if(getAuther() == null){
+            new AutherEndpoint().insert(author);
+        }
     }
 }
