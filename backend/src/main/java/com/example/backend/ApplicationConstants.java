@@ -22,5 +22,9 @@ public class ApplicationConstants {
      * Embeded.ly API Base URL
      */
     public static final String EMBEDED_API_BASE_URL = "https://api.embedly.com/1/";
+    /**
+     * Meaningcloud.com API Base URL for text classification
+     */
+    public static final String MEANING_CLOUD_API_BASE_URL = "https://api.meaningcloud.com/class-1.1/";
 
 }

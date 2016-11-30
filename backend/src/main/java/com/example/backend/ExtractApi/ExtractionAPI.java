@@ -3,7 +3,6 @@ package com.example.backend.ExtractApi;
 import com.example.backend.ApplicationConstants;
 import com.example.backend.ApplicationService;
 import com.example.backend.ExtractApi.Models.ExtractedNewsObject;
-import com.example.backend.SocialApis.Models.FacebookProfile;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
@@ -26,9 +25,9 @@ import javax.inject.Named;
                 packagePath = ""
         )
 )
-public class ExtractApi {
+public class ExtractionAPI {
 
-    private static final Logger logger = Logger.getLogger(ExtractApi.class.getName());
+    private static final Logger logger = Logger.getLogger(ExtractionAPI.class.getName());
 
     /**
      * Returns Extracted News Object from embeded.ly API.
@@ -41,10 +40,19 @@ public class ExtractApi {
             name = "extractUrl",
             path = "extractUrl/",
             httpMethod = ApiMethod.HttpMethod.GET)
-    public ExtractedNewsObject get(@Named("url") String url) throws NotFoundException, IOException {
+    public ExtractedNewsObject extractedNewsObject(@Named("url") String url) throws NotFoundException, IOException {
         logger.info("Getting Extracted News Object of url: " + url);
         return ApplicationService.getAPIService(ApplicationConstants.EMBEDED_API_BASE_URL)
                 .extractUrl(url,ApplicationConstants.EMBEDED_API_KEY).execute().body();
+    }
+
+    @ApiMethod(
+            name = "getNewsClassification",
+            path = "getNewsClassification/",
+            httpMethod = ApiMethod.HttpMethod.GET)
+    public ExtractedNewsObject getNewsClassification(@Named("title") String title, @Named("content") String content) throws NotFoundException, IOException {
+        logger.info("Getting classification for title: " + title + " content: " + content);
+        return null;
     }
 
 }
