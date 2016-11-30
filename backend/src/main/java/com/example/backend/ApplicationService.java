@@ -18,7 +18,7 @@ public class ApplicationService implements ServletContextListener {
   public final String TAG = ApplicationService.class.getSimpleName();
   private static String prevBaseUrl = "";
   private static RestClient getRestClient(String baseUrl) {
-    if (restClient == null && !prevBaseUrl.equals(baseUrl)) {
+    if (restClient == null || !prevBaseUrl.equals(baseUrl)) {
       restClient = new RestClient(baseUrl);
       prevBaseUrl = baseUrl;
     }

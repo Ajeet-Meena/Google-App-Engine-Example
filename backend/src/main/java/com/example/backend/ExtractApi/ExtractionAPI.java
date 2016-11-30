@@ -10,6 +10,7 @@ import com.google.api.server.spi.config.ApiNamespace;
 import com.google.api.server.spi.response.NotFoundException;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.logging.Logger;
 
 import javax.inject.Named;
@@ -59,6 +60,6 @@ public class ExtractionAPI {
         logger.info("Getting classification for title: " + title + " content: " + content);
         return ApplicationService.getAPIService(ApplicationConstants.MEANING_CLOUD_API_BASE_URL)
                 .getNewsClassification(ApplicationConstants.MEANING_CLOULD_API_KEY,
-                        ApplicationConstants.FORMATTING_JSON,"n",title,content,ApplicationConstants.IPTC_MODEL).execute().body();
+                        ApplicationConstants.FORMATTING_JSON,"n",URLEncoder.encode(title,"UTF-8"), URLEncoder.encode(content,"UTF-8"),ApplicationConstants.IPTC_MODEL).execute().body();
     }
 }
