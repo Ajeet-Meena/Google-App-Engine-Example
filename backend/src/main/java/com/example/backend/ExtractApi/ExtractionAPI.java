@@ -2,7 +2,8 @@ package com.example.backend.ExtractApi;
 
 import com.example.backend.ApplicationConstants;
 import com.example.backend.ApplicationService;
-import com.example.backend.ExtractApi.Models.ExtractedNewsObject;
+import com.example.backend.ExtractApi.Models.ExtractedNewsObject.ExtractedNewsObject;
+import com.example.backend.ExtractApi.Models.NewsClassification.NewsClassification;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
@@ -42,17 +43,22 @@ public class ExtractionAPI {
             httpMethod = ApiMethod.HttpMethod.GET)
     public ExtractedNewsObject extractedNewsObject(@Named("url") String url) throws NotFoundException, IOException {
         logger.info("Getting Extracted News Object of url: " + url);
-        return ApplicationService.getAPIService(ApplicationConstants.EMBEDED_API_BASE_URL)
+        ExtractedNewsObject extractedNewsObject = ApplicationService.getAPIService(ApplicationConstants.EMBEDED_API_BASE_URL)
                 .extractUrl(url,ApplicationConstants.EMBEDED_API_KEY).execute().body();
+        extractedNewsObject.setNewsClassification(getNewsClassification(
+                extractedNewsObject.getTitle(),extractedNewsObject.getContent()
+        ));
+        return extractedNewsObject;
     }
 
     @ApiMethod(
             name = "getNewsClassification",
             path = "getNewsClassification/",
             httpMethod = ApiMethod.HttpMethod.GET)
-    public ExtractedNewsObject getNewsClassification(@Named("title") String title, @Named("content") String content) throws NotFoundException, IOException {
+    public NewsClassification getNewsClassification(@Named("title") String title, @Named("content") String content) throws NotFoundException, IOException {
         logger.info("Getting classification for title: " + title + " content: " + content);
-        return null;
+        return ApplicationService.getAPIService(ApplicationConstants.MEANING_CLOUD_API_BASE_URL)
+                .getNewsClassification(ApplicationConstants.MEANING_CLOULD_API_KEY,
+                        ApplicationConstants.FORMATTING_JSON,"n",title,content,ApplicationConstants.IPTC_MODEL).execute().body();
     }
-
 }

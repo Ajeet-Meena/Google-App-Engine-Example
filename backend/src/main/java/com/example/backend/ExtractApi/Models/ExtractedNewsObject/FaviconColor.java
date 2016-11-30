@@ -1,5 +1,5 @@
 
-package com.example.backend.ExtractApi.Models;
+package com.example.backend.ExtractApi.Models.ExtractedNewsObject;
 
 import java.util.ArrayList;
 import java.util.List;

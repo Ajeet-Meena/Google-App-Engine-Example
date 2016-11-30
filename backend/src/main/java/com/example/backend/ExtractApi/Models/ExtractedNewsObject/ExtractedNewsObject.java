@@ -1,9 +1,11 @@
 
-package com.example.backend.ExtractApi.Models;
+package com.example.backend.ExtractApi.Models.ExtractedNewsObject;
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
+
+import com.example.backend.ExtractApi.Models.NewsClassification.NewsClassification;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -86,6 +88,8 @@ public class ExtractedNewsObject {
     @Expose
     private String type;
 
+    @SerializedName("news_classification")
+    private NewsClassification newsClassification;
     /**
      * No args constructor for use in serialization
      * 
@@ -599,4 +603,11 @@ public class ExtractedNewsObject {
         this.type = type;
     }
 
+    public NewsClassification getNewsClassification() {
+        return newsClassification;
+    }
+
+    public void setNewsClassification(NewsClassification newsClassification) {
+        this.newsClassification = newsClassification;
+    }
 }

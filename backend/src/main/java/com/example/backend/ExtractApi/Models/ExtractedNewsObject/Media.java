@@ -1,5 +1,5 @@
 
-package com.example.backend.ExtractApi.Models;
+package com.example.backend.ExtractApi.Models.ExtractedNewsObject;
 
 import com.google.appengine.repackaged.org.codehaus.jackson.annotate.JsonAutoDetect;
 import javax.annotation.Generated;

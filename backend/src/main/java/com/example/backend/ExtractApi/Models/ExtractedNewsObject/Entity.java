@@ -1,5 +1,5 @@
 
-package com.example.backend.ExtractApi.Models;
+package com.example.backend.ExtractApi.Models.ExtractedNewsObject;
 
 import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;

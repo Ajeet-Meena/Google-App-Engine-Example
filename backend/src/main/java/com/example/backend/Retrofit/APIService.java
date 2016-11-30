@@ -1,6 +1,7 @@
 package com.example.backend.Retrofit;
 
-import com.example.backend.ExtractApi.Models.ExtractedNewsObject;
+import com.example.backend.ExtractApi.Models.ExtractedNewsObject.ExtractedNewsObject;
+import com.example.backend.ExtractApi.Models.NewsClassification.NewsClassification;
 import com.example.backend.SocialApis.Models.FacebookProfile;
 
 import retrofit2.Call;
@@ -30,5 +31,15 @@ public interface APIService {
     Call<ExtractedNewsObject> extractUrl(
             @Query("url") String url,
             @Query("key") String key
+    );
+
+    @GET("/class-1.1")
+    Call<NewsClassification> getNewsClassification(
+            @Query("key") String key,
+            @Query("of") String format,
+            @Query("verbose") String verbose,
+            @Query("title") String title,
+            @Query("txt") String content,
+            @Query("model") String model
     );
 }

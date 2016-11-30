@@ -1,16 +1,16 @@
 
-package com.example.backend.ExtractApi.Models;
+package com.example.backend.ExtractApi.Models.ExtractedNewsObject;
 
 import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("org.jsonschema2pojo")
-public class Keyword {
+public class Author {
 
-    @SerializedName("score")
+    @SerializedName("url")
     @Expose
-    private Integer score;
+    private Object url;
     @SerializedName("name")
     @Expose
     private String name;
@@ -19,35 +19,35 @@ public class Keyword {
      * No args constructor for use in serialization
      * 
      */
-    public Keyword() {
+    public Author() {
     }
 
     /**
      * 
      * @param name
-     * @param score
+     * @param url
      */
-    public Keyword(Integer score, String name) {
-        this.score = score;
+    public Author(Object url, String name) {
+        this.url = url;
         this.name = name;
     }
 
     /**
      * 
      * @return
-     *     The score
+     *     The url
      */
-    public Integer getScore() {
-        return score;
+    public Object getUrl() {
+        return url;
     }
 
     /**
      * 
-     * @param score
-     *     The score
+     * @param url
+     *     The url
      */
-    public void setScore(Integer score) {
-        this.score = score;
+    public void setUrl(Object url) {
+        this.url = url;
     }
 
     /**

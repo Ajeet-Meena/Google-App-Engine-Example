@@ -25,6 +25,24 @@ public class ApplicationConstants {
     /**
      * Meaningcloud.com API Base URL for text classification
      */
-    public static final String MEANING_CLOUD_API_BASE_URL = "https://api.meaningcloud.com/class-1.1/";
+    public static final String MEANING_CLOUD_API_BASE_URL = "https://api.meaningcloud.com/";
 
+    /**
+     * Meaning Cloud Api Key
+     */
+    public static final String MEANING_CLOULD_API_KEY = "ab0cf966c2b3a85d482cc970e6ad4bcb";
+    /**
+     * IPTC Model for Meaning Cloud
+     */
+    public static final String IPTC_MODEL = "IPTC_en";
+
+    /**
+     * Social Model for Meaning cloud
+     */
+    public static final String SOCIAL_MODEL = "SocialMedia_en";
+
+    /**
+     * Formatting type for Meaning Cloud
+     */
+    public static final String FORMATTING_JSON = "json";
 }
