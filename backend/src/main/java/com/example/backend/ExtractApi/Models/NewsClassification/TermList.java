@@ -1,14 +1,20 @@
 
 package com.example.backend.ExtractApi.Models.NewsClassification;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
 import javax.annotation.Generated;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @Generated("org.jsonschema2pojo")
 public class TermList {
 
+    @SerializedName("form")
+    @Expose
     private String form;
+    @SerializedName("abs_relevance")
+    @Expose
     private String absRelevance;
 
     /**

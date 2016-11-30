@@ -13,7 +13,7 @@ import retrofit2.http.Query;
  */
 
 /**
- * Contains all API used the throughout application.
+ * Contains all API used throughout the application.
  */
 public interface APIService {
     /**

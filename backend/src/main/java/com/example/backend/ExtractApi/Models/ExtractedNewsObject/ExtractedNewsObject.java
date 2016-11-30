@@ -9,6 +9,8 @@ import com.example.backend.ExtractApi.Models.NewsClassification.NewsClassificati
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 @Generated("org.jsonschema2pojo")
 public class ExtractedNewsObject {
 
@@ -609,5 +611,10 @@ public class ExtractedNewsObject {
 
     public void setNewsClassification(NewsClassification newsClassification) {
         this.newsClassification = newsClassification;
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
     }
 }

@@ -47,7 +47,8 @@ public class ExtractionAPI {
         ExtractedNewsObject extractedNewsObject = ApplicationService.getAPIService(ApplicationConstants.EMBEDED_API_BASE_URL)
                 .extractUrl(url,ApplicationConstants.EMBEDED_API_KEY).execute().body();
         extractedNewsObject.setNewsClassification(getNewsClassification(
-                extractedNewsObject.getTitle(),extractedNewsObject.getContent()
+                extractedNewsObject.getTitle() == null ? "": extractedNewsObject.getTitle()
+                , extractedNewsObject.getContent() == null ? "": extractedNewsObject.getContent()
         ));
         return extractedNewsObject;
     }

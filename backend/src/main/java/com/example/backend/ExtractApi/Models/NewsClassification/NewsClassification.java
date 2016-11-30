@@ -1,16 +1,22 @@
 
 package com.example.backend.ExtractApi.Models.NewsClassification;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @Generated("org.jsonschema2pojo")
 public class NewsClassification {
 
+    @SerializedName("status")
+    @Expose
     private Status status;
+    @SerializedName("category_list")
+    @Expose
     private List<CategoryList> categoryList = new ArrayList<CategoryList>();
 
     /**
