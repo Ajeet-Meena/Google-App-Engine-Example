@@ -1,8 +1,5 @@
 package com.example.backend;
 
-import com.google.appengine.api.datastore.Text;
-import com.google.appengine.repackaged.org.codehaus.jackson.annotate.JsonIgnore;
-import com.googlecode.objectify.Key;
 import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
@@ -13,11 +10,8 @@ import com.googlecode.objectify.annotation.Parent;
 public class Quote {
     @Id
     private Long id;
-    private String who;
-    private String what;
-    private Text text;
     @Parent @Load
-    private Ref<Auther> auther;
+    private Ref<Author> author;
 
     public Quote() {
     }
@@ -30,35 +24,14 @@ public class Quote {
         this.id = id;
     }
 
-    public String getWho() {
-        return who;
+    public Author getAuther() {
+        return author.get();
     }
 
-    public void setWho(String who) {
-        this.who = who;
-    }
-
-    public String getWhat() {
-        return what;
-    }
-
-    public void setWhat(String what) {
-        this.what = what;
-    }
-
-    public Text getText() {
-        return text;
-    }
-
-    public void setText(Text text) {
-        this.text = text;
-    }
-
-    public Auther getAuther() {
-        return auther.get();
-    }
-
-    public void setAuther(Auther auther) {
-        this.auther = Ref.create(auther);
+    public void setAuther(Author author) {
+        this.author = Ref.create(author);
+        if(getAuther() == null){
+            new AutherEndpoint().insert(author);
+        }
     }
 }
