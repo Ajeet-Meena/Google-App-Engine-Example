@@ -4,6 +4,8 @@ import com.example.backend.Retrofit.APIService;
 import com.example.backend.Retrofit.RestClient;
 import com.googlecode.objectify.ObjectifyService;
 
+import java.util.logging.Logger;
+
 import javax.servlet.ServletContextListener;
 import javax.servlet.ServletContextEvent;
 
@@ -17,6 +19,7 @@ public class ApplicationService implements ServletContextListener {
   private static RestClient restClient;
   public final String TAG = ApplicationService.class.getSimpleName();
   private static String prevBaseUrl = "";
+  private static final Logger logger = Logger.getLogger(ApplicationService.class.getName());
   private static RestClient getRestClient(String baseUrl) {
     if (restClient == null || !prevBaseUrl.equals(baseUrl)) {
       restClient = new RestClient(baseUrl);
@@ -34,6 +37,7 @@ public class ApplicationService implements ServletContextListener {
   }
 
   public void contextInitialized(ServletContextEvent event) {
+    logger.warning("log");
     ObjectifyService.register(Quote.class);
     ObjectifyService.register(Author.class);
     myApplication = this;

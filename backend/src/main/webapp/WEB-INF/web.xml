@@ -9,6 +9,14 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     <servlet>
+        <servlet-name>MyServlet</servlet-name>
+        <servlet-class>com.example.backend.MyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyServlet</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>SystemServiceServlet</servlet-name>
         <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
         <init-param>
@@ -16,7 +24,8 @@
             <param-value>com.example.backend.QuoteEndpoint,
                 com.example.backend.AutherEndpoint,
                 com.example.backend.SocialApis.SocialApi,
-                com.example.backend.ExtractApi.ExtractionAPI</param-value>
+                com.example.backend.ExtractApi.ExtractionAPI
+                </param-value>
         </init-param>
     </servlet>
     <servlet-mapping>
