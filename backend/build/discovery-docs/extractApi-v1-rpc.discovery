@@ -1,0 +1,450 @@
+{
+ "kind": "discovery#rpcDescription",
+ "etag": "\"ODRTh3xaRR64wpeXJSlF33HMN-0/Gz41RV3OUMmP-svavhrGffIw6d0\"",
+ "discoveryVersion": "v1",
+ "id": "extractApi:v1",
+ "name": "extractApi",
+ "version": "v1",
+ "description": "This is an API",
+ "ownerDomain": "backend.example.com",
+ "ownerName": "backend.example.com",
+ "icons": {
+  "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+  "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+ },
+ "protocol": "rpc",
+ "rootUrl": "https://myApplicationId.appspot.com/_ah/api/",
+ "rpcUrl": "https://myApplicationId.appspot.com/_ah/api/rpc",
+ "rpcPath": "/_ah/api/rpc",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "AppLink": {
+   "id": "AppLink",
+   "type": "object",
+   "properties": {
+    "appName": {
+     "type": "string"
+    },
+    "appStoreId": {
+     "type": "string"
+    },
+    "id": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "namespace": {
+     "type": "string"
+    },
+    "package": {
+     "type": "string"
+    },
+    "path": {
+     "type": "string"
+    },
+    "type": {
+     "type": "string"
+    },
+    "url": {
+     "type": "string"
+    }
+   }
+  },
+  "Author": {
+   "id": "Author",
+   "type": "object",
+   "properties": {
+    "name": {
+     "type": "string"
+    },
+    "url": {
+     "$ref": "_any"
+    }
+   }
+  },
+  "CategoryList": {
+   "id": "CategoryList",
+   "type": "object",
+   "properties": {
+    "absRelevance": {
+     "type": "string"
+    },
+    "code": {
+     "type": "string"
+    },
+    "label": {
+     "type": "string"
+    },
+    "relevance": {
+     "type": "string"
+    },
+    "termList": {
+     "type": "array",
+     "items": {
+      "$ref": "TermList"
+     }
+    }
+   }
+  },
+  "Color": {
+   "id": "Color",
+   "type": "object",
+   "properties": {
+    "color": {
+     "type": "array",
+     "items": {
+      "type": "integer",
+      "format": "int32"
+     }
+    },
+    "weight": {
+     "type": "number",
+     "format": "float"
+    }
+   }
+  },
+  "Entity": {
+   "id": "Entity",
+   "type": "object",
+   "properties": {
+    "count": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "name": {
+     "type": "string"
+    }
+   }
+  },
+  "ExtractedNewsObject": {
+   "id": "ExtractedNewsObject",
+   "type": "object",
+   "properties": {
+    "appLinks": {
+     "type": "array",
+     "items": {
+      "$ref": "AppLink"
+     }
+    },
+    "authors": {
+     "type": "array",
+     "items": {
+      "$ref": "Author"
+     }
+    },
+    "cacheAge": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "content": {
+     "type": "string"
+    },
+    "description": {
+     "type": "string"
+    },
+    "embeds": {
+     "type": "array",
+     "items": {
+      "$ref": "_any"
+     }
+    },
+    "entities": {
+     "type": "array",
+     "items": {
+      "$ref": "Entity"
+     }
+    },
+    "faviconColors": {
+     "type": "array",
+     "items": {
+      "$ref": "FaviconColor"
+     }
+    },
+    "faviconUrl": {
+     "type": "string"
+    },
+    "images": {
+     "type": "array",
+     "items": {
+      "$ref": "Image"
+     }
+    },
+    "keywords": {
+     "type": "array",
+     "items": {
+      "$ref": "Keyword"
+     }
+    },
+    "language": {
+     "type": "string"
+    },
+    "lead": {
+     "$ref": "_any"
+    },
+    "media": {
+     "$ref": "Media"
+    },
+    "newsClassification": {
+     "$ref": "NewsClassification"
+    },
+    "offset": {
+     "$ref": "_any"
+    },
+    "originalUrl": {
+     "type": "string"
+    },
+    "providerDisplay": {
+     "type": "string"
+    },
+    "providerName": {
+     "type": "string"
+    },
+    "providerUrl": {
+     "type": "string"
+    },
+    "published": {
+     "$ref": "_any"
+    },
+    "related": {
+     "type": "array",
+     "items": {
+      "$ref": "_any"
+     }
+    },
+    "safe": {
+     "type": "boolean"
+    },
+    "title": {
+     "type": "string"
+    },
+    "type": {
+     "type": "string"
+    },
+    "url": {
+     "type": "string"
+    }
+   }
+  },
+  "FaviconColor": {
+   "id": "FaviconColor",
+   "type": "object",
+   "properties": {
+    "color": {
+     "type": "array",
+     "items": {
+      "type": "integer",
+      "format": "int32"
+     }
+    },
+    "weight": {
+     "type": "number",
+     "format": "float"
+    }
+   }
+  },
+  "Image": {
+   "id": "Image",
+   "type": "object",
+   "properties": {
+    "caption": {
+     "$ref": "_any"
+    },
+    "colors": {
+     "type": "array",
+     "items": {
+      "$ref": "Color"
+     }
+    },
+    "entropy": {
+     "type": "number",
+     "format": "float"
+    },
+    "height": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "size": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "url": {
+     "type": "string"
+    },
+    "width": {
+     "type": "integer",
+     "format": "int32"
+    }
+   }
+  },
+  "Keyword": {
+   "id": "Keyword",
+   "type": "object",
+   "properties": {
+    "name": {
+     "type": "string"
+    },
+    "score": {
+     "type": "integer",
+     "format": "int32"
+    }
+   }
+  },
+  "Media": {
+   "id": "Media",
+   "type": "object",
+   "properties": {
+    "url": {
+     "type": "string"
+    }
+   }
+  },
+  "NewsClassification": {
+   "id": "NewsClassification",
+   "type": "object",
+   "properties": {
+    "categoryList": {
+     "type": "array",
+     "items": {
+      "$ref": "CategoryList"
+     }
+    },
+    "status": {
+     "$ref": "Status"
+    }
+   }
+  },
+  "Status": {
+   "id": "Status",
+   "type": "object",
+   "properties": {
+    "code": {
+     "type": "string"
+    },
+    "credits": {
+     "type": "string"
+    },
+    "msg": {
+     "type": "string"
+    },
+    "remainingCredits": {
+     "type": "string"
+    }
+   }
+  },
+  "TermList": {
+   "id": "TermList",
+   "type": "object",
+   "properties": {
+    "absRelevance": {
+     "type": "string"
+    },
+    "form": {
+     "type": "string"
+    }
+   }
+  },
+  "_any": {
+   "id": "_any",
+   "type": "any"
+  }
+ },
+ "methods": {
+  "extractApi.extractUrl": {
+   "id": "extractApi.extractUrl",
+   "allowGet": true,
+   "parameters": {
+    "url": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "url"
+   ],
+   "returns": {
+    "$ref": "ExtractedNewsObject"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "extractApi.getNewsClassification": {
+   "id": "extractApi.getNewsClassification",
+   "allowGet": true,
+   "parameters": {
+    "content": {
+     "type": "string",
+     "required": true
+    },
+    "title": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "content",
+    "title"
+   ],
+   "returns": {
+    "$ref": "NewsClassification"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  }
+ }
+}

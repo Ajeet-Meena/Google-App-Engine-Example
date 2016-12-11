@@ -1,0 +1,349 @@
+{
+ "kind": "discovery#restDescription",
+ "etag": "\"ODRTh3xaRR64wpeXJSlF33HMN-0/F7_T3rONoBq1M0oC3V8hvQ6Y7yk\"",
+ "discoveryVersion": "v1",
+ "id": "rssApi:v1",
+ "name": "rssApi",
+ "version": "v1",
+ "description": "This is an API",
+ "ownerDomain": "backend.example.com",
+ "ownerName": "backend.example.com",
+ "icons": {
+  "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+  "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+ },
+ "protocol": "rest",
+ "baseUrl": "https://myApplicationId.appspot.com/_ah/api/rssApi/v1/",
+ "basePath": "/_ah/api/rssApi/v1/",
+ "rootUrl": "https://myApplicationId.appspot.com/_ah/api/",
+ "servicePath": "rssApi/v1/",
+ "batchPath": "batch",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "ApiResponse": {
+   "id": "ApiResponse",
+   "type": "object",
+   "properties": {
+    "message": {
+     "type": "string"
+    },
+    "responsecode": {
+     "type": "integer",
+     "format": "int32"
+    }
+   }
+  },
+  "Feed": {
+   "id": "Feed",
+   "type": "object",
+   "properties": {
+    "status": {
+     "$ref": "Status"
+    },
+    "title": {
+     "type": "string"
+    }
+   }
+  },
+  "Meta": {
+   "id": "Meta",
+   "type": "object",
+   "properties": {
+    "byPage": {
+     "type": "string",
+     "format": "int64"
+    },
+    "page": {
+     "type": "string",
+     "format": "int64"
+    },
+    "search": {
+     "$ref": "Search"
+    },
+    "total": {
+     "type": "string",
+     "format": "int64"
+    }
+   }
+  },
+  "Search": {
+   "id": "Search",
+   "type": "object"
+  },
+  "Status": {
+   "id": "Status",
+   "type": "object",
+   "properties": {
+    "bozoRank": {
+     "type": "string",
+     "format": "int64"
+    },
+    "code": {
+     "type": "string",
+     "format": "int64"
+    },
+    "entriesCountSinceLastMaintenance": {
+     "type": "string",
+     "format": "int64"
+    },
+    "feed": {
+     "type": "string"
+    },
+    "http": {
+     "type": "string"
+    },
+    "lastFetch": {
+     "type": "string",
+     "format": "int64"
+    },
+    "lastMaintenanceAt": {
+     "type": "string",
+     "format": "int64"
+    },
+    "lastParse": {
+     "type": "string",
+     "format": "int64"
+    },
+    "nextFetch": {
+     "type": "string",
+     "format": "int64"
+    },
+    "period": {
+     "type": "string",
+     "format": "int64"
+    },
+    "popularity": {
+     "type": "string",
+     "format": "int64"
+    },
+    "pornRank": {
+     "type": "string",
+     "format": "int64"
+    },
+    "velocity": {
+     "type": "string",
+     "format": "int64"
+    }
+   }
+  },
+  "Subscription": {
+   "id": "Subscription",
+   "type": "object",
+   "properties": {
+    "endpoint": {
+     "type": "string"
+    },
+    "feed": {
+     "$ref": "Feed"
+    },
+    "format": {
+     "type": "string"
+    },
+    "secret": {
+     "$ref": "_any"
+    },
+    "subscription": {
+     "$ref": "Subscription"
+    }
+   }
+  },
+  "SubscriptionListResponse": {
+   "id": "SubscriptionListResponse",
+   "type": "object",
+   "properties": {
+    "message": {
+     "type": "string"
+    },
+    "meta": {
+     "$ref": "Meta"
+    },
+    "responsecode": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "subscriptions": {
+     "type": "array",
+     "items": {
+      "$ref": "Subscription"
+     }
+    }
+   }
+  },
+  "_any": {
+   "id": "_any",
+   "type": "any"
+  }
+ },
+ "methods": {
+  "getSubscribedRssList": {
+   "id": "rssApi.getSubscribedRssList",
+   "path": "getSubscribedRssList",
+   "httpMethod": "GET",
+   "parameters": {
+    "noOfItems": {
+     "type": "integer",
+     "required": true,
+     "format": "int32",
+     "location": "query"
+    },
+    "page": {
+     "type": "integer",
+     "required": true,
+     "format": "int32",
+     "location": "query"
+    }
+   },
+   "parameterOrder": [
+    "noOfItems",
+    "page"
+   ],
+   "response": {
+    "$ref": "SubscriptionListResponse"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "retrieveRss": {
+   "id": "rssApi.retrieveRss",
+   "path": "retrieveRss",
+   "httpMethod": "GET",
+   "parameters": {
+    "callbackUrl": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    },
+    "count": {
+     "type": "integer",
+     "required": true,
+     "format": "int32",
+     "location": "query"
+    },
+    "topicUrl": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    }
+   },
+   "parameterOrder": [
+    "callbackUrl",
+    "count",
+    "topicUrl"
+   ],
+   "response": {
+    "$ref": "ApiResponse"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "subscribeTopic": {
+   "id": "rssApi.subscribeTopic",
+   "path": "subscribeTopic",
+   "httpMethod": "GET",
+   "parameters": {
+    "callbackUrl": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    },
+    "topicUrl": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    }
+   },
+   "parameterOrder": [
+    "callbackUrl",
+    "topicUrl"
+   ],
+   "response": {
+    "$ref": "ApiResponse"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "unsubscribeTopic": {
+   "id": "rssApi.unsubscribeTopic",
+   "path": "unsubscribeTopic",
+   "httpMethod": "GET",
+   "parameters": {
+    "callbackUrl": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    },
+    "topicUrl": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    }
+   },
+   "parameterOrder": [
+    "callbackUrl",
+    "topicUrl"
+   ],
+   "response": {
+    "$ref": "ApiResponse"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  }
+ }
+}
