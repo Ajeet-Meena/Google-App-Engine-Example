@@ -1,4 +1,4 @@
-package com.ajeetmeena.googleappengine;
+package io.wallmag.android;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

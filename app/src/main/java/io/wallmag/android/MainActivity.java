@@ -1,4 +1,4 @@
-package com.ajeetmeena.googleappengine;
+package io.wallmag.android;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

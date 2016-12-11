@@ -5,7 +5,7 @@ android {
     buildToolsVersion '25.0.0'
 
     defaultConfig {
-        applicationId "com.ajeetmeena.googleappengine"
+        applicationId "io.wallmag.android"
         minSdkVersion 9
         targetSdkVersion 23
         versionCode 1
@@ -16,6 +16,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
     }
 }
 
