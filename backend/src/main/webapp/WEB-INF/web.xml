@@ -8,24 +8,61 @@
         <filter-name>ObjectifyFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
     <servlet>
         <servlet-name>MyServlet</servlet-name>
-        <servlet-class>com.example.backend.MyServlet</servlet-class>
+        <servlet-class>io.wallmag.backend.MyServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>MyServlet</servlet-name>
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UploadFile</servlet-name>
+        <servlet-class>io.wallmag.backend.FileUploadApi.FileUploadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UploadFile</servlet-name>
+        <url-pattern>/uploadApi/uploadFile</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>GcsExample</servlet-name>
+        <servlet-class>
+            com.google.appengine.demos.GcsExampleServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GcsExample</servlet-name>
+        <url-pattern>/gcs/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PortOfFilesAPIGuestbookServlet</servlet-name>
+        <servlet-class>
+            com.google.appengine.demos.PortOfFilesAPIGuestbookServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PortOfFilesAPIGuestbookServlet</servlet-name>
+        <url-pattern>/guestbook/*</url-pattern>
+    </servlet-mapping>
+
+
     <servlet>
         <servlet-name>SystemServiceServlet</servlet-name>
         <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
         <init-param>
             <param-name>services</param-name>
-            <param-value>com.example.backend.QuoteEndpoint,
-                com.example.backend.AutherEndpoint,
-                com.example.backend.SocialApis.SocialApi,
-                com.example.backend.ExtractApi.ExtractionAPI
-                </param-value>
+            <param-value>
+                io.wallmag.backend.SocialApis.SocialApi,
+                io.wallmag.backend.ExtractionApi.ExtractionAPI,
+                io.wallmag.backend.RSSApi.RssEndpoint,
+                io.wallmag.backend.GcmApi.MessagingEndpoint,
+                io.wallmag.backend.GcmApi.RegistrationEndpoint
+            </param-value>
         </init-param>
     </servlet>
     <servlet-mapping>
@@ -37,6 +74,6 @@
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
     <listener>
-        <listener-class>com.example.backend.ApplicationService</listener-class>
+        <listener-class>io.wallmag.backend.ApplicationService</listener-class>
     </listener>
 </web-app>
